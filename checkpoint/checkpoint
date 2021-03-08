@@ -1,0 +1,2 @@
+model_checkpoint_path: "stock_close_price_pred_SimpleRNN.ckpt"
+all_model_checkpoint_paths: "stock_close_price_pred_SimpleRNN.ckpt"
