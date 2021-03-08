@@ -1,2 +1,2 @@
-model_checkpoint_path: "stock_close_price_DNN.ckpt"
-all_model_checkpoint_paths: "stock_close_price_DNN.ckpt"
+model_checkpoint_path: "stock_rice_pred_DNN.ckpt"
+all_model_checkpoint_paths: "stock_rice_pred_DNN.ckpt"
