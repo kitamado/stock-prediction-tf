@@ -1,2 +1,3 @@
-# intern-stocks-analysis
-intern test phase work 
+# stock-prediction-tf
+
+Use DNN, CNN, RNN to predict stock price.
