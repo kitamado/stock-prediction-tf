@@ -1,2 +1,2 @@
-model_checkpoint_path: "stock_rice_pred_SimpleRNN.ckpt"
-all_model_checkpoint_paths: "stock_rice_pred_SimpleRNN.ckpt"
+model_checkpoint_path: "stock_rice_pred_CNN.ckpt"
+all_model_checkpoint_paths: "stock_rice_pred_CNN.ckpt"
