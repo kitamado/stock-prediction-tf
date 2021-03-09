@@ -3,8 +3,6 @@
 
 # In[1]:
 
-
-get_ipython().run_line_magic('matplotlib', 'notebook')
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -34,8 +32,8 @@ def clean_csv_data(filename, path='./test_data/'):
 # In[4]:
 
 
-stk = clean_csv_data('600000.csv')
-stk
+# stk = clean_csv_data('600000.csv')
+
 
 
 # In[5]:
@@ -43,17 +41,17 @@ stk
 
 # 收盘价和涨幅图像
 
-plt.subplot(1,2,1)
-plt.plot(stk['date'], stk['close'], label='close_price')
-plt.xlabel('date')
-plt.legend()
-plt.subplot(1,2,2)
-plt.plot(stk['date'], stk['rise'], color='red', label='rise')
-plt.xlabel('date')
-plt.legend()
+# plt.subplot(1,2,1)
+# plt.plot(stk['date'], stk['close'], label='close_price')
+# plt.xlabel('date')
+# plt.legend()
+# plt.subplot(1,2,2)
+# plt.plot(stk['date'], stk['rise'], color='red', label='rise')
+# plt.xlabel('date')
+# plt.legend()
 
-plt.show()
-plt.savefig('Cleaned_600000.png')
+# plt.show()
+# plt.savefig('Cleaned_600000.png')
 
 
 # In[ ]:
