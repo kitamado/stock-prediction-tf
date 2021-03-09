@@ -20,11 +20,10 @@ import math
 # In[2]:
 
 
-path = './test_data/'
+from clean_data import clean_csv_data
 stock_code = '600000'
-filename = 'cleaned'+stock_code+'.csv'
-df = pd.read_csv(path+filename)
-df
+df = clean_csv_data(stock_code + '.csv')
+
 
 
 # In[3]:
@@ -118,7 +117,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
 # 该应用只观测loss数值，不观测准确率，所以删去metrics选项
 
 
-# In[14]:
+# In[10]:
 
 
 # 存取模型(断点续训)
@@ -141,7 +140,7 @@ history = model.fit(x_train, y_train, batch_size=4, epochs=50, validation_data=(
 model.summary()
 
 
-# In[15]:
+# In[11]:
 
 
 # 参数提取存入文本
@@ -153,38 +152,42 @@ for v in model.trainable_variables:
 file.close()
 
 
-# In[16]:
+# In[14]:
 
 
-# acc/loss 可视化
+# loss 可视化
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
+plt.figure(1)
 plt.plot(loss, label='Training Loss')
 plt.plot(val_loss, label='Validation Loss')
 plt.title('Training and Validation Loss')
 plt.legend()
 plt.show()
+plt.savefig('RNN_Close_Price_Loss.png')
 
 
-# In[17]:
+# In[15]:
 
 
 # 预测
 # 测试集输入模型进行预测
-predicted_stock_rice = model.predict(x_test)
+predicted_stock_cl_price = model.predict(x_test)
 # 对预测数据还原---从（0，1）反归一化到原始范围
-predicted_stock_rice = sc.inverse_transform(predicted_stock_rice)
+predicted_stock_cl_price = sc.inverse_transform(predicted_stock_cl_price)
 # 对真实数据还原---从（0，1）反归一化到原始范围
-real_stock_rice = sc.inverse_transform(test_set[sample_sz:])
+real_stock_cl_price = sc.inverse_transform(test_set[sample_sz:])
 # 画出真实数据和预测数据的对比曲线
-plt.plot(real_stock_rice, color='red', label='stk_code-'+stock_code+'-rice')
-plt.plot(predicted_stock_rice, color='blue', label='Predicted '+'stk_code-'+stock_code+'-rice')
-plt.title('stk_code '+stock_code + ' rice Prediction')
+plt.figure(2)
+plt.plot(real_stock_cl_price, color='red', label='real close price')
+plt.plot(predicted_stock_cl_price, color='blue', label='predicted close price')
+plt.title('stock code '+stock_code + ' close price prediction')
 plt.xlabel('Time')
-plt.ylabel('Stock rice')
+plt.ylabel('Stock close price')
 plt.legend()
 plt.show()
+plt.savefig('RNN_Close_Price_Pridiction.png')
 
 
 # In[ ]:
