@@ -20,10 +20,9 @@ import math
 # In[2]:
 
 
-path = './test_data/'
+from clean_data import clean_csv_data
 stock_code = '600000'
-filename = 'cleaned'+stock_code+'.csv'
-df = pd.read_csv(path+filename)
+df = clean_csv_data(stock_code + '.csv')
 
 
 # In[3]:
@@ -117,7 +116,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
 # 该应用只观测loss数值，不观测准确率，所以删去metrics选项
 
 
-# In[14]:
+# In[10]:
 
 
 # 存取模型(断点续训)
@@ -140,7 +139,7 @@ history = model.fit(x_train, y_train, batch_size=8, epochs=50, validation_data=(
 model.summary()
 
 
-# In[15]:
+# In[11]:
 
 
 # 参数提取存入文本
@@ -152,7 +151,7 @@ for v in model.trainable_variables:
 file.close()
 
 
-# In[16]:
+# In[12]:
 
 
 # acc/loss 可视化
@@ -166,7 +165,7 @@ plt.legend()
 plt.show()
 
 
-# In[17]:
+# In[13]:
 
 
 # 预测
